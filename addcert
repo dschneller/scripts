@@ -1,0 +1,8 @@
+#!/bin/bash
+CERT="${1}"
+if [ "" == "${CERT}" ]; then
+	echo >&2 Usage: $(basename ${0}) \<certificate.der\>
+	exit 1;
+fi
+
+iosCertTrustManagerForce.py -a "${1}"

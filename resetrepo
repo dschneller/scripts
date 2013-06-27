@@ -1,0 +1,18 @@
+#!/bin/bash
+gitdir=$(pwd)/.git
+
+gitreset() {
+	git reset --hard
+	git clean -qdf
+}
+
+if [ ! -d ${gitdir} ]; then
+	echo "No git repo ${gitdir}";
+	exit 1;
+fi
+
+if [ "${1}" == "-q" ]; then
+	gitreset;
+elif [ $(read -p "Reset repo in ${gitdir}? Hit Ctrl-C to abort, Enter to continue: ") ]; then
+	gitreset;
+fi

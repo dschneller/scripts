@@ -1,0 +1,8 @@
+#!/bin/bash
+CERTNAME="${1}"
+if [ "" == "${CERTNAME}" ]; then
+	echo >&2 Usage: $(basename ${0}) certificate-name
+	exit 1
+fi
+security delete-certificate -t -c "${CERTNAME}"
+
